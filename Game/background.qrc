@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/backgroundImage">
+        <file>images/airportsBackground.png</file>
+        <file>images/cityBackground.png</file>
+        <file>images/universityBackground.png</file>
+        <file>images/endScene0.png</file>
+        <file>images/startScene0.png</file>
+        <file>images/startScene1.png</file>
+        <file>images/startScene2.png</file>
+        <file>images/startScene3.png</file>
+    </qresource>
+    <qresource prefix="/otherImage">
+        <file>images/bus.png</file>
+        <file>images/chatUI.png</file>
+        <file>images/quest.png</file>
+        <file>images/splash.png</file>
+        <file>images/tampere.png</file>
+        <file>images/startButton.png</file>
+    </qresource>
+</RCC>

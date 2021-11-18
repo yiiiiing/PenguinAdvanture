@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/penguin">
+        <file>penguin/attack/attack0.png</file>
+        <file>penguin/attack/attack1.png</file>
+        <file>penguin/attack/attack2.png</file>
+        <file>penguin/attack/attack3.png</file>
+        <file>penguin/attack/attack4.png</file>
+        <file>penguin/attack/attack5.png</file>
+        <file>penguin/attack/attack6.png</file>
+        <file>penguin/die/die0.png</file>
+        <file>penguin/die/die1.png</file>
+        <file>penguin/die/die2.png</file>
+        <file>penguin/die/die3.png</file>
+        <file>penguin/die/die4.png</file>
+        <file>penguin/hit/hit0.png</file>
+        <file>penguin/hit/hit1.png</file>
+        <file>penguin/hit/hit2.png</file>
+        <file>penguin/hit/hit3.png</file>
+        <file>penguin/hit/hit4.png</file>
+        <file>penguin/move/move0.png</file>
+        <file>penguin/move/move1.png</file>
+        <file>penguin/move/move2.png</file>
+        <file>penguin/move/move3.png</file>
+        <file>penguin/move/move4.png</file>
+        <file>penguin/move/move5.png</file>
+        <file>penguin/stand/stand0.png</file>
+    </qresource>
+</RCC>

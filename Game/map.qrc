@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/mapData">
+        <file>mapData/airportsMap.csv</file>
+        <file>mapData/cityMap.csv</file>
+        <file>mapData/hospitalMap.csv</file>
+        <file>mapData/universityMap.csv</file>
+    </qresource>
+    <qresource prefix="/mapImage">
+        <file>images/tampereMap.png</file>
+        <file>images/airportsMap.png</file>
+        <file>images/cityMap.png</file>
+        <file>images/hospitalMap.png</file>
+        <file>images/universityMap.png</file>
+    </qresource>
+</RCC>

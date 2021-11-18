@@ -1,27 +1,126 @@
-# Programming 3 Exercise project template
+# Penguin Advanture
 
-1. Make sure you have setup ssh-key for your GitLab account. https://course-gitlab.tuni.fi/profile/keys
-2. Clone and add template repo as remote.
-Address: git@course-gitlab.tuni.fi:tie-0240x-ohjelmointi-3-programming-3-2020-2021/group_template_project.git
-3. Pull from template, and do git submodule update --init in repo. Check that Course now contains something.
-4. Make sure you can build the project. (Should compile without issues if your environment is setup correctly)
+> This is a side-scrolling role-playing game (the final project of c++ programming course), and a linear game with three main scenes and some assisted scenes. In this game, player controls a penguin, a newcomer to Tampere,Finland who received the letter of admission from Tampere University (TAU). They must escape by destroying hostile monsters, avoiding traps and obtain the necessary items to register successfully at TAU. 
 
-## Submodule / CourseLib
-Submodule for CourseLib is currently configured to use ssh. If you haven't yet setup an ssh-key. Go do it at  https://course-gitlab.tuni.fi/profile/keys
+### Game Mechanics
+1. Game-rules
+  - move your character in the scenes to find a new way
+  - talk with NPCs to get important information
+  - battle against monsters to avoid death
 
-The page contains also instructions for generating and using existing ssh-keys.
+2. Game-controls
+  - move left and right with the "arrow" keys  
+  - jump with the "space" key. The height of jump depends on the time of pressing "space"
+  - talk with NPCs by clicking mouse 
+  - attack monsters with the "a" key
+ 
+ 
+### Software Structure
+1. Structure Diagram
 
-Don't change anything in CourseLib ( You won't be able to submit changes made in it )
+![](Assests/structureDiagram.jpg)
 
-If you find any bugs and/or missing features you can report them in GitLab https://course-gitlab.tuni.fi/tie-0240x-ohjelmointi-3-programming-3-2020-2021/course/-/issues
+ 2. Project Functionality
+- Player can interact with objects: jump, move, die, battle with enemies, chat with NPCs
+- Player can interact with scenes: get bank card at the bank, take train in the airport, take different buses in Tampere map
 
-## Doxygen documentation
+ 
+### Classes
+> Reponsibilities of the key classes
+- Player: 
+    1) Store player’s current position, status(move, stand, ...) and directions(move left or right)
+    
+    2) Store player’s current map( which map the player is current in: city, university or others)
+    
+    3) Check if player is on ground, at celling, or pushing the block, according to current map
+    
+    4) Update player’s status and play different animation, according to 3)
 
-No Doxyfile is provided with the project, but you may generate it using doxygen or doxywizard. For example, "doxygen -g" should generate configuration file named DoxyFile.
+- BasicScene:
+    1) Connect scene and QTimer to update the scene
+    
+    2) Provide virtual function for child class to use, such as functions for initializing scene, adding enemies, adding QGraphicsItems
 
-## Other notes
+- BasicMap:
+    1) Store types for all tiles in the map by reading csv files
+    
+    2) Convert scene coordinates into tile index, vice versa
+    
+    3) Return the tile type, given scene coordinates
+    
+    4) Store all the NPCs’ position
 
-You should create your own code inside your own namespace :)
+- GameView:
+    1) Set current background music and current scene the player is in 
+    
+    2) Connect signals of different scenes and the slots in this class to switch current scene and it’s corresponding BGM 
+
+### Some game features
+1. Character
+- Player
+    1) Higher and nomal jump based on the duration of pressing "jump" key
+    ![](Assests/playerFeature_jump.png)
+                                                              
+    2) The penguin has different animation when it is walking, attacking or being killed.
+    ![](Assests/penguin.png)
+
+- Enemy
+    1) Enemies would kill the player character.
+    2) Enemies would be killed by the player character.
+    3) Enemies have the effect when they are attacked. 
+    ![](Assests/enemyEffect.jpg)
+
+    4) All of enemies would be revived when player changes scenes. 
+    5) Two kinds of enemies.
+    ![](Assests/enemy.png)
+
+ 
+ 
+2. Scenes
+- Main scenes: airport scene, city scene and university scene (player can input)
+- Assistance scenes: tampere scene, hospital scene (player cannot input)
+- Other scenes: start scene and end scene
+- Features in all scenes
+    1) The penguin has sound effects of attack, jump and die. 
+    2) Add background music.
+    3) The player character can not pass the scenes’ boundaries. 
+    4) Background, terrain, enemies, NPCs would move when the player character moves. Those objects and background are in long or medium shot so their moving speed is less than the player character. 
+    5) The transition of main scene and assistant scene would be triggered by the player character. They are shown as: choosing bus routes, bus moving to its destination, the player character dies.
+
+- Features in opening cinematic
+    1) Qdialog shows after splash screen. Then, the opening cinematic starts. 
+    ![](Assests/dialog.png)
+ 
+    2) The opening cinematic consists of four pictures. Each of them has its own prologue.  Each prologue ends, the next picture would show. 
+    3) Four pictures changes like turning pages.
+    ![](Assests/opening.jpg)
+ 
+
+- Features in the scene of Tampere 
+Given the starting and ending points’ coordinates, the bus would move along the connection line with correct angle. 
+![](Assests/map.png)
+
+ 
+3. Objects
+- NPCs
+    1) NPCs have their own animation. 
+    2) NPCs can talk with player    
+    3) The chat could be run forward or back.
+    4) The mouse would change its appearance when clicking buttoms, from arrow to hand.
+    5)School teacher has two kinds of animation: talking and being quiet. 
+    6)School teacher (right figure) and tutor in hospital (left figure) have different scripts based on player’s situation. 
+    ![](Assests/npcTalk.png)
+
+- Movable objects
+    1) Bus: player chooses bus route and the bus can move on the map of Tampere freely (the left figure below).
+
+    ![](Assests/train.png)             
+    
+    2) Train: the train can move in the airport. Before boarding the train, the player character can’t walk on the track because of the transparent wall. During this process, the player character would be invisible and its movement would be locked (the right figure above).
+ 
+ - Tiles
+There are three types of tiles: blocks, platforms and none tiles. Player character can move on platform; stop by blocks; fall on none tiles.
 
 
-# You are allowed (and probably should) make changes to this file after you have started your project. :)
+### Problems in this project
+Due to the limit time (because this is a final project of a course), my codes are not perfect, clean in my point of view, like, I just use the QT garbage collection mechanics and didn't hanle with memeory management, which is very important in c++ program. Additionally, the architecture of classes are not very good and I didn't finish the UniTest and exception handling part. I hope that I will have time to optimize my codes as my programming skills gradually get improved :blush: .

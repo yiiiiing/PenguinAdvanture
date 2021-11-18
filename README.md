@@ -71,7 +71,8 @@
     ![](Assests/enemyEffect.jpg)
 
     4) All of enemies would be revived when player changes scenes. 
-    5) Two kinds of enemies.
+    5) Two kinds of enemies
+   
     ![](Assests/enemy.png)
 
  
